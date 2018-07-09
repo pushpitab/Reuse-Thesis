@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reuse platform</title>
+        <h2>Welcome to Reuse Platform! </h2>
+        <!-- Compiled and minified CSS -->
+        <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+        <script src="js/firebaseAuth.js"></script>
+        <script src="js/script.js"></script>
+        <script>
+            console.log("IN SIDE HOME");
+          //Initialize Firebase
+           var config = {
+            apiKey: "AIzaSyD_KuvGBgdl2XXHdAY8KDrLPcuVkr-HNbc",
+            authDomain: "reuseplatform.firebaseapp.com",
+            databaseURL: "https://reuseplatform.firebaseio.com",
+            projectId: "reuseplatform",
+            storageBucket: "reuseplatform.appspot.com",
+            messagingSenderId: "441430662205"
+           }
+          firebase.initializeApp(config);
+
+        </script>            
+    </head>
+    <body>
+        <div class="container">
+            <h3 id="github-displayName"></h3>
+            <img id="github-pic" src="" width="50" height="60" style="display:none; visibility: hidden;"/>
+            <p id="github-email"></p>
+            <button 
+                class="btn btn-primary"
+                id="github-signin" 
+                onclick={signInWithGoogle()}
+            >
+                Sign In With GitHub
+            </button>
+            <button 
+                class="btn btn-"
+                id="signout" 
+                onclick={signOut()}
+                style="display:none; visibility: hidden;"
+                >
+                Sign Out
+            </button>
+            <button 
+                class="btn btn-"
+                id="showMyRepo" 
+                onclick={showMyRepo()}
+                style="display:none; visibility: hidden;"
+                >
+                List my Repo(/s)
+            </button>
+            <form id="repoForm" action="/RepoSubmit" method="POST"><br>
+                <select id="Repolist" name="repoSelect" style="display:none; visibility: hidden;" onchange="getReadMe()">   
+                <option value="1">-- Please select a Repo ---</option>
+                </select><br>
+                
+                <input type="hidden" id="postUserData" name="currentUserName" value="">
+                <div id="message"></div><br>
+                <div> <br>
+                    <label id="infnamelabel" for="Inputfile"></label> <br>
+                    <input type="text" name="Inputfile" id="infile_name" style="display:none; visibility: hidden;"><br>
+                </div> <br>
+                <div> <br>
+                     <label id="outfnamelabel" for="opfile_name"></label> <br>
+                    <input type="text" name="Outputfile" id="opfile_name" style="display:none; visibility: hidden;"> <br>
+                </div><br>
+
+                <input type="submit" id="Submit" value="Submit" style="display:none; visibility: hidden;"><br>
+            </form>
+        </div> 
+    </body>
+</html>
